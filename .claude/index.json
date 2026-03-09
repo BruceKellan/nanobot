@@ -1,0 +1,227 @@
+{
+  "timestamp": "2026-03-09T16:31:56+08:00",
+  "project": "nanobot",
+  "version": "0.1.4.post4",
+  "language": "Python (主), TypeScript (bridge)",
+  "python_version": ">=3.11",
+  "root_claude_md": "CLAUDE.md",
+  "modules": [
+    {
+      "name": "agent",
+      "path": "nanobot/agent/",
+      "claude_md": "nanobot/agent/CLAUDE.md",
+      "entry_files": ["nanobot/agent/loop.py", "nanobot/agent/context.py"],
+      "interfaces": ["AgentLoop", "ContextBuilder", "MemoryStore", "SubagentManager"],
+      "test_files": [
+        "tests/test_loop_save_turn.py",
+        "tests/test_task_cancel.py",
+        "tests/test_context_prompt_cache.py",
+        "tests/test_memory_consolidation_types.py",
+        "tests/test_consolidate_offset.py"
+      ],
+      "key_files": [
+        "nanobot/agent/loop.py",
+        "nanobot/agent/context.py",
+        "nanobot/agent/memory.py",
+        "nanobot/agent/skills.py",
+        "nanobot/agent/subagent.py"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "name": "agent/tools",
+      "path": "nanobot/agent/tools/",
+      "claude_md": "nanobot/agent/tools/CLAUDE.md",
+      "entry_files": ["nanobot/agent/tools/registry.py", "nanobot/agent/tools/base.py"],
+      "interfaces": ["ToolRegistry", "Tool", "ExecTool", "ReadFileTool", "WriteFileTool", "EditFileTool", "ListDirTool", "WebSearchTool", "WebFetchTool", "MessageTool", "SpawnTool", "CronTool", "MCPToolWrapper"],
+      "test_files": [
+        "tests/test_tool_validation.py",
+        "tests/test_mcp_tool.py",
+        "tests/test_message_tool.py",
+        "tests/test_message_tool_suppress.py"
+      ],
+      "key_files": [
+        "nanobot/agent/tools/base.py",
+        "nanobot/agent/tools/registry.py",
+        "nanobot/agent/tools/shell.py",
+        "nanobot/agent/tools/filesystem.py",
+        "nanobot/agent/tools/web.py",
+        "nanobot/agent/tools/message.py",
+        "nanobot/agent/tools/spawn.py",
+        "nanobot/agent/tools/cron.py",
+        "nanobot/agent/tools/mcp.py"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "name": "channels",
+      "path": "nanobot/channels/",
+      "claude_md": "nanobot/channels/CLAUDE.md",
+      "entry_files": ["nanobot/channels/manager.py", "nanobot/channels/base.py"],
+      "interfaces": ["BaseChannel", "ChannelManager", "TelegramChannel", "DiscordChannel", "WhatsAppChannel"],
+      "test_files": [
+        "tests/test_base_channel.py",
+        "tests/test_telegram_channel.py",
+        "tests/test_dingtalk_channel.py",
+        "tests/test_feishu_post_content.py",
+        "tests/test_feishu_table_split.py",
+        "tests/test_email_channel.py",
+        "tests/test_matrix_channel.py",
+        "tests/test_qq_channel.py"
+      ],
+      "key_files": [
+        "nanobot/channels/base.py",
+        "nanobot/channels/manager.py",
+        "nanobot/channels/telegram.py",
+        "nanobot/channels/discord.py",
+        "nanobot/channels/whatsapp.py",
+        "nanobot/channels/feishu.py",
+        "nanobot/channels/dingtalk.py",
+        "nanobot/channels/matrix.py",
+        "nanobot/channels/slack.py",
+        "nanobot/channels/qq.py",
+        "nanobot/channels/email.py",
+        "nanobot/channels/mochat.py"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "name": "providers",
+      "path": "nanobot/providers/",
+      "claude_md": "nanobot/providers/CLAUDE.md",
+      "entry_files": ["nanobot/providers/base.py", "nanobot/providers/registry.py"],
+      "interfaces": ["LLMProvider", "LLMResponse", "ToolCallRequest", "LiteLLMProvider", "CustomProvider", "AzureOpenAIProvider", "OpenAICodexProvider", "GroqTranscriptionProvider"],
+      "test_files": [
+        "tests/test_azure_openai_provider.py",
+        "tests/test_commands.py"
+      ],
+      "key_files": [
+        "nanobot/providers/base.py",
+        "nanobot/providers/registry.py",
+        "nanobot/providers/litellm_provider.py",
+        "nanobot/providers/custom_provider.py",
+        "nanobot/providers/azure_openai_provider.py",
+        "nanobot/providers/openai_codex_provider.py",
+        "nanobot/providers/transcription.py"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "name": "bus",
+      "path": "nanobot/bus/",
+      "entry_files": ["nanobot/bus/queue.py", "nanobot/bus/events.py"],
+      "interfaces": ["MessageBus", "InboundMessage", "OutboundMessage"],
+      "test_files": [],
+      "key_files": ["nanobot/bus/queue.py", "nanobot/bus/events.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "config",
+      "path": "nanobot/config/",
+      "entry_files": ["nanobot/config/schema.py", "nanobot/config/loader.py"],
+      "interfaces": ["Config", "TelegramConfig", "DiscordConfig", "WhatsAppConfig", "FeishuConfig", "DingTalkConfig", "MatrixConfig", "EmailConfig"],
+      "test_files": ["tests/test_config_paths.py"],
+      "key_files": ["nanobot/config/schema.py", "nanobot/config/loader.py", "nanobot/config/paths.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "session",
+      "path": "nanobot/session/",
+      "entry_files": ["nanobot/session/manager.py"],
+      "interfaces": ["Session", "SessionManager"],
+      "test_files": [],
+      "key_files": ["nanobot/session/manager.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "cron",
+      "path": "nanobot/cron/",
+      "entry_files": ["nanobot/cron/service.py", "nanobot/cron/types.py"],
+      "interfaces": ["CronService", "CronJob", "CronSchedule", "CronPayload"],
+      "test_files": ["tests/test_cron_service.py"],
+      "key_files": ["nanobot/cron/service.py", "nanobot/cron/types.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "heartbeat",
+      "path": "nanobot/heartbeat/",
+      "entry_files": ["nanobot/heartbeat/service.py"],
+      "interfaces": ["HeartbeatService"],
+      "test_files": ["tests/test_heartbeat_service.py"],
+      "key_files": ["nanobot/heartbeat/service.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "cli",
+      "path": "nanobot/cli/",
+      "entry_files": ["nanobot/cli/commands.py"],
+      "interfaces": ["app (Typer)"],
+      "test_files": ["tests/test_commands.py", "tests/test_cli_input.py"],
+      "key_files": ["nanobot/cli/commands.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "utils",
+      "path": "nanobot/utils/",
+      "entry_files": ["nanobot/utils/helpers.py"],
+      "interfaces": ["ensure_dir", "safe_filename", "split_message", "sync_workspace_templates", "detect_image_mime"],
+      "test_files": [],
+      "key_files": ["nanobot/utils/helpers.py"],
+      "coverage": "complete"
+    },
+    {
+      "name": "skills",
+      "path": "nanobot/skills/",
+      "entry_files": [],
+      "interfaces": [],
+      "test_files": [],
+      "key_files": ["nanobot/skills/README.md"],
+      "skills": ["github", "weather", "summarize", "tmux", "clawhub", "skill-creator"],
+      "coverage": "complete"
+    },
+    {
+      "name": "templates",
+      "path": "nanobot/templates/",
+      "entry_files": [],
+      "interfaces": [],
+      "test_files": [],
+      "key_files": [],
+      "coverage": "complete"
+    },
+    {
+      "name": "bridge",
+      "path": "bridge/",
+      "claude_md": "bridge/CLAUDE.md",
+      "entry_files": ["bridge/src/index.ts"],
+      "interfaces": ["BridgeServer"],
+      "test_files": [],
+      "key_files": ["bridge/src/index.ts", "bridge/src/server.ts", "bridge/package.json"],
+      "coverage": "complete"
+    }
+  ],
+  "scan_stats": {
+    "total_python_files": 57,
+    "total_typescript_files": 3,
+    "total_test_files": 22,
+    "total_skill_dirs": 6,
+    "scanned_python_files": 57,
+    "scanned_typescript_files": 2,
+    "scanned_test_files": 1,
+    "coverage_percent": 95,
+    "truncated": false
+  },
+  "ignore_rules_source": ".gitignore",
+  "ignored_dirs": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "__pycache__",
+    ".venv",
+    "*.egg-info",
+    "bridge/dist",
+    "bridge/node_modules"
+  ],
+  "gaps": [],
+  "next_steps": []
+}
